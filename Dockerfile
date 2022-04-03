@@ -1,0 +1,16 @@
+ARG GO_VERSION=1.18.0
+ARG ALPINE_VERSION=3.15
+
+FROM golang:${GO_VERSION} AS builder
+ENV CGO_ENABLED 0
+ARG GO_APP_NAME=watcher
+WORKDIR /app
+COPY . .
+RUN go build -o $GO_APP_NAME ./cmd/$GO_APP_NAME
+
+FROM alpine:${ALPINE_VERSION}
+ARG GO_APP_NAME=watcher
+COPY --from=builder /app/$GO_APP_NAME /app/$GO_APP_NAME
+WORKDIR /app
+
+CMD ./$GO_APP_NAME
