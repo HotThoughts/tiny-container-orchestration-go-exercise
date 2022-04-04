@@ -5,6 +5,7 @@ A tiny container orchestration written in golang.
 ## Build docker images
 
 We use `docker-bake.hcl` to build two docker images
+
 - `tinygoexercise:local-dev-api` is the `status-state-api`
 - `tinygoexercise:local-dev-controller` is the `status-state-controller`
 

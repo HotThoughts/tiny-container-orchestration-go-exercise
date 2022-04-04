@@ -13,7 +13,7 @@ import (
 )
 
 type Interface interface {
-	New()
+	InitWatcher(port string)
 }
 
 type Watcher struct {
@@ -25,6 +25,7 @@ var (
 	w      Watcher
 )
 
+// InitWatcher initilizes a Watcher
 func InitWatcher(port string) {
 	w = Watcher{logger: logger.New()}
 	defer w.logger.Sync()
@@ -47,6 +48,7 @@ func newDockerClient() *client.Client {
 	return cli
 }
 
+// watchContainer creates a api endpoint for list of containers running on the local docekr host
 func watchContainer(rw http.ResponseWriter, r *http.Request) {
 	rw.WriteHeader(http.StatusOK)
 	rw.Header().Set("Content-Type", "application/json")
