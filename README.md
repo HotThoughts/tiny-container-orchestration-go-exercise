@@ -17,7 +17,7 @@ docker buildx bake
 
 ### Run watcher
 
-```shell
+```sh
 docker run \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -p 9001:9001 \
@@ -28,7 +28,7 @@ Note: In order to gain access to the Docker Engine API, we must gain access to t
 
 ### Run controller
 
-```shell
+```sh
 docker run \
   -v /var/run/docker.sock:/var/run/docker.sock \
   --net=host \
