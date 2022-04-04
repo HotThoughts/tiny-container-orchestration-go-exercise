@@ -17,6 +17,7 @@ func main() {
 	c = controller.New(port)
 
 	s := gocron.NewScheduler()
+	//nolint
 	s.Every(uint64(timeInterval)).Seconds().Do(task)
 	<-s.Start()
 }

@@ -37,7 +37,14 @@ func New(port string) *Controller {
 		logger:      logger.New(),
 		apiEndpoint: "http://localhost:" + port + "/watchContainer",
 	}
-	defer c.logger.Sync()
+
+	defer func() {
+		err := c.logger.Sync()
+		if err != nil {
+			c.logger.Error(err)
+		}
+	}()
+
 	docker = newDockerClient(&c)
 
 	c.statusStateList = getContainerList(&c)

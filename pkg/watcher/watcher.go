@@ -28,7 +28,12 @@ var (
 // InitWatcher initilizes a Watcher
 func InitWatcher(port string) {
 	w = Watcher{logger: logger.New()}
-	defer w.logger.Sync()
+	defer func() {
+		err := w.logger.Sync()
+		if err != nil {
+			w.logger.Error(err)
+		}
+	}()
 
 	docker = newDockerClient()
 
@@ -49,7 +54,7 @@ func newDockerClient() *client.Client {
 }
 
 // watchContainer creates a api endpoint for list of containers running on the local docekr host
-func watchContainer(rw http.ResponseWriter, r *http.Request) {
+func watchContainer(rw http.ResponseWriter, _ *http.Request) {
 	rw.WriteHeader(http.StatusOK)
 	rw.Header().Set("Content-Type", "application/json")
 
