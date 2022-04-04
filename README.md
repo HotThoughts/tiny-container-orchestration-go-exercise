@@ -43,4 +43,4 @@ We might also prefer other well-developed CD tools if they can cover our problem
 
 ## References
 
-[^1] [Official documentation of `docker buildx bake`](https://docs.docker.com/engine/reference/commandline/buildx_build/)
+[^1]: [Official documentation of `docker buildx bake`](https://docs.docker.com/engine/reference/commandline/buildx_build/)
