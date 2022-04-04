@@ -3,7 +3,11 @@ name: Docker file Lint
 on:
   pull_request:
     paths:
-      - "Dockerfile"
+    - "Dockerfile"
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   lint:
