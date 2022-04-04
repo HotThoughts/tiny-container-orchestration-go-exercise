@@ -1,0 +1,5 @@
+ignored:
+  - DL3005 # This rule is wrong. See https://github.com/hadolint/hadolint/issues/562
+  - DL3008
+  - DL3059
+  - DL3025
