@@ -13,4 +13,5 @@ ARG GO_APP_NAME=watcher
 COPY --from=builder /app/$GO_APP_NAME /app/$GO_APP_NAME
 WORKDIR /app
 
-CMD ./$GO_APP_NAME
+ENV GO_APP_NAME=${GO_APP_NAME}
+CMD ./${GO_APP_NAME}
