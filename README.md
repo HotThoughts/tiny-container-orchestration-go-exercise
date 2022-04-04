@@ -18,7 +18,10 @@ docker buildx bake
 ### Run watcher
 
 ```shell
-docker run -v /var/run/docker.sock:/var/run/docker.sock -p 9001:9001 tinygoexercise:local-dev-api ./watcher
+docker run \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -p 9001:9001 \
+  tinygoexercise:local-dev-api
 ```
 
 Note: In order to gain access to the Docker Engine API, we must gain access to the socket connect via mount `/var/run/docker.sock`.
@@ -26,5 +29,8 @@ Note: In order to gain access to the Docker Engine API, we must gain access to t
 ### Run controller
 
 ```shell
-docker run -v /var/run/docker.sock:/var/run/docker.sock --net=host tinygoexercise:local-dev-controller ./controller
+docker run \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  --net=host \
+  tinygoexercise:local-dev-controller
 ```
